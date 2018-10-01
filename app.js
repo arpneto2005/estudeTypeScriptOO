@@ -36,7 +36,8 @@ var Concessionaria = /** @class */ (function () {
 }());
 var Pessoa = /** @class */ (function () {
     function Pessoa(nome, carroPreferido) {
-        this.nome = nome, this.carroPreferido = carroPreferido;
+        this.nome = nome;
+        this.carroPreferido = carroPreferido;
     }
     Pessoa.prototype.dizerNome = function () {
         return this.nome;
@@ -45,21 +46,33 @@ var Pessoa = /** @class */ (function () {
         return this.carroPreferido;
     };
     Pessoa.prototype.comprarCarro = function (carro) {
+        this.carro = carro;
     };
-    Pessoa.prototype.dizerCorroQueTem = function () {
+    Pessoa.prototype.dizerCarroQueTem = function () {
         return this.carro;
     };
     return Pessoa;
 }());
 /** Criando Lista de Carros */
+/** Instâncias */
 var carroA = new Carro('Land Hover', 4);
 var carroB = new Carro('Veloster', 3);
 var carroC = new Carro('Jetta', 4);
-/** Lista de Carros Concesionaria */
-var listaCarros = [carroA, carroB, carroC];
-/** Criação de Pessoas  */
-var pessoa = new Pessoa('Angelo', 'Veloster');
-console.log(pessoa.dizerCarroPreferido());
+var carroD = new Carro('Renegate', 4);
+/** Lista de Carros da Concesionaria */
+var listaCarros = [carroA, carroB, carroC, carroD];
 var concessionaria = new Concessionaria('Avenida Heraclito Graça', listaCarros);
+var cliente = new Pessoa('Angelo', 'Renegate');
 /** Exibir LIsta de Carros */
-console.log(concessionaria.mostrarListaCarro());
+//console.log(concessionaria.mostrarListaCarro());
+/** Exibir Carro Favorito */
+//console.log('Carro Preferido do Cliente '+ cliente.dizerNome() + ' é: ' + cliente.dizerCarroPreferido());
+/** Tratando Informações */
+concessionaria.mostrarListaCarro().map(function (carro) {
+    //console.log(carro);
+    if (carro['modelo'] == cliente.dizerCarroPreferido()) {
+        console.log('Carro apos compra: ' + carro);
+        cliente.comprarCarro(carro);
+    }
+});
+//console.log('Cliente apos a compra: ' + cliente.dizerCarroQueTem());

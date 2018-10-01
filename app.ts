@@ -49,10 +49,11 @@ class Concessionaria{
 class Pessoa{
     private nome: String;
     private carroPreferido: String;
-    private carro: any;
+    private carro: Carro;
 
     constructor(nome: String, carroPreferido: String){
-        this.nome = nome, this.carroPreferido = carroPreferido;
+        this.nome = nome;
+        this.carroPreferido = carroPreferido;
     }
 
     public dizerNome(): String{
@@ -63,28 +64,43 @@ class Pessoa{
         return this.carroPreferido;
     }
 
-    public comprarCarro(carro: any): void{
-
+    public comprarCarro(carro: Carro): void{
+        this.carro = carro;
     }
 
-    public dizerCorroQueTem(): any{
+    public dizerCarroQueTem(): Carro{
         return this.carro;
     }
 }
 
 /** Criando Lista de Carros */
+/** Instâncias */
 let carroA = new Carro('Land Hover', 4);
 let carroB = new Carro('Veloster', 3);
 let carroC = new Carro('Jetta', 4);
+let carroD = new Carro('Renegate', 4);
 
-/** Lista de Carros Concesionaria */
-let listaCarros: Carro[] = [carroA, carroB, carroC];
-
-/** Criação de Pessoas  */
-let pessoa = new Pessoa('Angelo', 'Veloster');
-console.log(pessoa.dizerCarroPreferido());
+/** Lista de Carros da Concesionaria */
+let listaCarros: Carro[] = [carroA, carroB, carroC, carroD];
 
 let concessionaria = new Concessionaria('Avenida Heraclito Graça', listaCarros);
 
+let cliente = new Pessoa('Angelo', 'Renegate');
+
 /** Exibir LIsta de Carros */
-console.log(concessionaria.mostrarListaCarro());
+//console.log(concessionaria.mostrarListaCarro());
+
+/** Exibir Carro Favorito */
+//console.log('Carro Preferido do Cliente '+ cliente.dizerNome() + ' é: ' + cliente.dizerCarroPreferido());
+
+/** Tratando Informações */
+
+concessionaria.mostrarListaCarro().map((carro: Carro) => {
+    //console.log(carro);
+    if(carro['modelo'] == cliente.dizerCarroPreferido() ){
+        console.log('Carro apos compra: ' + carro);
+        cliente.comprarCarro(carro);
+    }
+});
+
+//console.log('Cliente apos a compra: ' + cliente.dizerCarroQueTem());

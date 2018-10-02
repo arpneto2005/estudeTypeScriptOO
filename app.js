@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ola = function (nome) {
     console.log("Olá " + nome);
 };
-ola("Angelo");
+//ola("Angelo");
 var Carro_1 = require("./Carro");
 var Pessoa_1 = require("./Pessoa");
 var Concessionaria_1 = require("./Concessionaria");

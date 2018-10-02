@@ -11,6 +11,9 @@ var Concessionaria = /** @class */ (function () {
     Concessionaria.prototype.mostrarListaCarro = function () {
         return this.listaCarro;
     };
+    Concessionaria.prototype.fornecerHorarioDeFuncionamento = function () {
+        return 'Segunda à Sexta das 8:00 às 18:00';
+    };
     return Concessionaria;
 }());
 exports.Concessionaria = Concessionaria;

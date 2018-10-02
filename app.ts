@@ -1,7 +1,7 @@
 let ola = (nome: String) => {
     console.log("Olá " + nome);
 }
-ola("Angelo");
+//ola("Angelo");
 
 import {Carro} from './Carro';
 import {Pessoa} from './Pessoa';

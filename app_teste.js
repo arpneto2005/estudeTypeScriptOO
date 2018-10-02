@@ -4,6 +4,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Carro_1 = require("./Carro");
 var Moto_1 = require("./Moto");
 var Concessionaria_1 = require("./Concessionaria");
+var Pessoa_1 = require("./Pessoa");
+var concessionaria = new Concessionaria_1.Concessionaria('', []);
+var pessoa = new Pessoa_1.Pessoa('', '');
 var carro = new Carro_1.Carro('Hilux', 4);
 var moto = new Moto_1.Moto();
 carro.acelerar();
@@ -11,24 +14,33 @@ moto.acelerar();
 console.log(carro);
 console.log(moto);
 /** Teste Interface */
-var concessionaria = new Concessionaria_1.Concessionaria('', []);
 console.log('Horário de Funcionamento: ' + concessionaria.fornecerHorarioDeFuncionamento());
 /** Teste dos Arquivos DAO */
 // ConcessionariaDAO
-var ConcessionariaDAO_1 = require("./ConcessionariaDAO");
-var PessoaDAO_1 = require("./PessoaDAO");
-var Pessoa_1 = require("./Pessoa");
-var CarroDAO_1 = require("./CarroDAO");
-var MotoDAO_1 = require("./MotoDAO");
-var dao = new ConcessionariaDAO_1.ConcessionariaDAO();
-dao.inserir(concessionaria);
+/*
+import {ConcessionariaDAO} from './ConcessionariaDAO'
+import { PessoaDAO } from './PessoaDAO';
+import { CarroDAO } from './CarroDAO';
+import { MotoDAO } from './MotoDAO';
+*/
+//let dao: ConcessionariaDAO = new ConcessionariaDAO();
+//dao.inserir(concessionaria);
 // PessoaDAO
-var dao2 = new PessoaDAO_1.PessoaDAO();
-var pessoa = new Pessoa_1.Pessoa('', '');
-dao2.atualizar(pessoa);
+//let dao2: PessoaDAO = new PessoaDAO();
+//dao2.atualizar(pessoa);
 // Carro
-var dao3 = new CarroDAO_1.CarroDAO();
-dao3.inserir(carro);
+//let dao3: CarroDAO = new CarroDAO();
+//dao3.inserir(carro);
 // Moto
-var dao4 = new MotoDAO_1.MotoDAO();
-dao4.atualizar(moto);
+//let dao4 : MotoDAO = new MotoDAO();
+//dao4.atualizar(moto);
+/** Uso de Classes Genéricas */
+var DAO_1 = require("./DAO");
+var daoConcessionaria = new DAO_1.DAO('', []);
+var daoPessoa = new DAO_1.DAO('', '');
+var daoCarro = new DAO_1.DAO();
+var daoMoto = new DAO_1.DAO();
+daoConcessionaria.inserir(concessionaria);
+daoPessoa.atualizar(pessoa);
+daoCarro.inserir(carro);
+daoMoto.atualizar(moto);

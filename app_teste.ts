@@ -13,7 +13,7 @@ carro.acelerar();
 moto.acelerar();
 
 console.log(carro);
-console.log(moto);,
+console.log(moto);
 
 /** Teste Interface */
 
